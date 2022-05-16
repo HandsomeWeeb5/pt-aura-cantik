@@ -1,0 +1,100 @@
+<script>
+	
+    //* Prop Values
+	let buttonProps = {
+	class:[$$restProps.class]
+	}
+
+</script>
+
+<button on:click
+        on:mouseover
+        on:mouseenter
+        on:mouseleave
+    {...buttonProps}>
+        <slot/>
+</button>
+
+<style>
+    button{
+        width: auto;
+        cursor: pointer;
+        background-color: lightgray;
+        color: black;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px; /* Default Font Size */
+        font-weight: 700;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+    }
+
+	.primary{
+		background-color: orangered;
+        color: white;
+        border: none;
+        transition: 0.2s;
+	}
+    .primary:hover{
+		background-color: #F99E6A;
+        color: white;
+        border: 1px solid #933804;
+	}
+    .danger{
+        background-color: #B30000;
+        color: white;
+        border: none;
+        transition: 0.2s;
+    }
+	.danger:hover {
+		background-color: #D16666;
+        border: 1px solid #6B0000;
+        color: #6B0000;
+	}
+    .info{
+        background-color: #145087;
+        color: white;
+        border: none;
+        transition: 0.2s;
+    }
+    .info:hover{
+        background-color: #7AB6ED;
+        border: 1px solid #145087;
+        color: #145087;
+    }
+    .success{
+        background-color: #008D06;
+        color: white;
+        border: none;
+        transition: 0.2s;
+    }
+    .success:hover{
+        background-color: #99EA9C;
+        border: 1px solid #005103;
+        color: #005103;
+    }
+    .warning{
+        background-color: #FFF500;
+        color: #666200;
+        border: 1px solid #666200;
+        transition: 0.2s;
+    }
+    .warning:hover{
+        background-color: #FFFA80;
+        border: none;
+        color: #666200;
+    }
+
+	.lg {
+		font-size: 1.2em;
+        padding-left: 10px;
+        padding-right: 10px;
+	}
+
+    .xt-lg {
+        font-size: 1.5em;
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+</style>

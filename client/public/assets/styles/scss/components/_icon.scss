@@ -1,0 +1,27 @@
+
+.notification {
+    font-size: 2em;
+    text-decoration: none;
+    color: $secondary90;
+    :hover {
+        color: $warning50;
+    }
+};
+    
+/* ==== WAREHOUSE ICON ==== */
+#warehouse-menu:hover {
+    color: $info70;
+}
+#warehouse-menu:active{
+    color: $info70;
+    text-decoration: $info70 underline;
+}
+
+/* ==== SETTING MENU ICON ==== */
+#settings-menu:hover{
+    color: $error50;
+}
+#settings-menu:active{
+    color: $error50;
+    text-decoration: $info70 underline;
+}

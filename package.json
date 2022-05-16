@@ -1,0 +1,23 @@
+{
+  "name": "pergudangan_pt_aura_cantik",
+  "version": "1.0.0",
+  "description": "NodeJS, Express, Svelte (Framework), SQL (MariaDB), Apache with XAMPP",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Farhan Tri B",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "bootstrap": "^5.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mariadb": "^3.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
