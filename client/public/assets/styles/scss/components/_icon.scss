@@ -1,27 +1,26 @@
-
 .notification {
     font-size: 2em;
     text-decoration: none;
-    color: $secondary90;
+    color: #555353;
     :hover {
-        color: $warning50;
+        color: #FFF500;
     }
 };
     
 /* ==== WAREHOUSE ICON ==== */
 #warehouse-menu:hover {
-    color: $info70;
+    color: #1B6AB4;
 }
 #warehouse-menu:active{
-    color: $info70;
-    text-decoration: $info70 underline;
+    color: #1B6AB4;
+    text-decoration: #1B6AB4 underline;
 }
 
 /* ==== SETTING MENU ICON ==== */
 #settings-menu:hover{
-    color: $error50;
+    color: #B30000;
 }
 #settings-menu:active{
-    color: $error50;
-    text-decoration: $info70 underline;
+    color: #B30000;
+    text-decoration: #B30000 underline;
 }

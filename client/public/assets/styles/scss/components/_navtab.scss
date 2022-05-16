@@ -1,0 +1,24 @@
+@mixin semibold {
+    font-weight: 600;
+}
+
+#pm-brg {
+    @include semibold();
+    color: #008D06;
+}
+
+#pg-brg {
+    @include semibold();
+    color: #F55D07;
+}
+
+#pnk-brg {
+    @include semibold();
+    color: #B30000;
+}
+
+#hst-brg {
+    @include semibold();
+    color: #1B6AB4;
+}
+

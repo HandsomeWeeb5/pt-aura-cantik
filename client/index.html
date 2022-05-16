@@ -7,7 +7,6 @@
     <title>Jakarta Duty Free</title>
     <link rel="icon" href="/client/public/assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/client/public/assets/styles/css/style.css">
-    <link rel="stylesheet" href="/client/public/assets/styles/css/custom.css">
     <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
@@ -72,33 +71,51 @@
 
             <!---- NAVIGATION TABS ---->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!---- PEMASUKAN BARANG TAB ---->
                 <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="pemasukan-barang-tab" data-bs-toggle="tab" data-bs-target="#pemasukan-barang" type="button" role="tab" aria-controls="pemasukan-barang" aria-selected="true">
-                      <span id="pm-brg" style="font-weight: 600;">Pemasukan Barang</span>
+                      <span id="pm-brg">Pemasukan Barang</span>
                     </button>
                 </li>
+                <!----- PENGELUARAN BARANG TAB ----->
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pengeluaran-barang-tab" data-bs-toggle="tab" data-bs-target="#pengeluaran-barang" type="button" role="tab" aria-controls="pengeluaran-barang" aria-selected="false">
-                      <span id="pg-brg" style="font-weight: 600;">Pengeluaran Barang</span>
+                      <span id="pg-brg">Pengeluaran Barang</span>
                     </button>
                 </li>
+                <!------ PENARIKAN BARANG TAB ----->
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="penarikan-barang-tab" data-bs-toggle="tab" data-bs-target="#penarikan-barang" type="button" role="tab" aria-controls="penarikan-barang" aria-selected="false">
+                        <span id="pnk-brg">Penarikan Barang</span>
+                      </button>
+                  </li>
+                <!----- HISTORI BARANG TAB -----> 
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="histori-barang-tab" data-bs-toggle="tab" data-bs-target="#histori-barang" type="button" role="tab" aria-controls="histori-barang" aria-selected="false">
                       <span id="hst-brg">Histori Barang</span>
                     </button>
                 </li>
             </ul>
+
+            <!----- TABS CONTENT ------->
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="pemasukan-barang" role="tabpanel" aria-labelledby="pemasukan-barang-tab">
-                    <div class="container bg-light p-2">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga possimus voluptates corrupti, illo alias velit beatae accusamus voluptatum non, natus itaque. Itaque sed dolorum dolor, labore praesentium inventore dignissimos! Et!</p>
-                        <button class="btn btn-primary">
-                            Button Test
-                        </button>
-                    </div>
-                    
+                    <div class="container-xl bg-light p-2">
+                        <div class="container">
+                            <!---- SEARCH & FILTER CONTENT ---->
+                            <div class="d-flex align-items-center">
+                                <p style="margin: 0;">Search: </p>
+                                <input type="text" placeholder="Cari Deskripsi Barang" id="searchBar" class="ms-2">
+                                <button class="btn btn-light border border-dark mx-2"> More Filter </button>
+                            </div>
+                        </div>
+                        <div class="container">
+                            
+                        </div>
+                    </div>    
                 </div>
                 <div class="tab-pane fade" id="pengeluaran-barang" role="tabpanel" aria-labelledby="pengeluaran-barang-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum similique sed quas repellat! Fugiat saepe nihil, eaque itaque neque mollitia, asperiores tempore accusamus, libero quas accusantium laborum voluptas impedit. Expedita.</div>
+                <div class="tab-pane fade" id="penarikan-barang" role="tabpanel" aria-labelledby="penarikan-barang-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum similique sed quas repellat! Fugiat saepe nihil, eaque itaque neque mollitia, asperiores tempore accusamus, libero quas accusantium laborum voluptas impedit. Expedita.</div>
                 <div class="tab-pane fade" id="histori-barang" role="tabpanel" aria-labelledby="histori-barang-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. In ullam necessitatibus maiores, delectus, autem numquam iusto cupiditate aliquam fuga id nihil eius asperiores neque voluptatem, natus corporis voluptatibus voluptas consequatur?</div>
             </div>
               
