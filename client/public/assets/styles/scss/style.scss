@@ -1,31 +1,14 @@
+// IMPORT BOOTSTRAP
+@use "../scss/custom";
+
 // Import color style
-@import "../scss/components/color-style";
-
-// Import bootstrap, google fonts, & icomoon
-@import "../../icomoon_font_icon/style.css";
-@import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-
-// Import variable & map amends bootstrap 5
-@import "../scss/abstract/variables";
+@use "../scss/components/color-style";
 
 // Import Components
-@import "../scss/components/header";
-@import "../scss/components/sidebar";
-@import "../scss/components/icon";
-@import "../scss/components/navtab";
-
-
-/* ==== TEXT STYLES: TEXT WEIGHT ==== */
-$light: 300;
-$regular: 400;
-$medium: 500;
-$semi-bold: 600;
-$bold: 700;
-/* ==== TEXT STYLES: HEADING FONT SIZE*/
-$heading-4: 24px;
-$heading-5: 20px;
-$heading-6: 16px;
+@use "../scss/components/header";
+@use "../scss/components/sidebar";
+@use "../scss/components/icon";
+@use "../scss/components/navtab";
 
 * {
     ::after { 
@@ -63,7 +46,7 @@ body{
 /* ========= Content ======= */
 .content-body{
     grid-area: Content;
-    background-color: $neutral90;
+    background-color: #EFEFEF;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
@@ -84,3 +67,4 @@ footer{
     margin-top: 10px;
     text-align: center;
 }
+

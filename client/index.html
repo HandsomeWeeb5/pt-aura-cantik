@@ -70,55 +70,96 @@
             <span class="display-text"> Warehouse </span>
 
             <!---- NAVIGATION TABS ---->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <!---- PEMASUKAN BARANG TAB ---->
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="pemasukan-barang-tab" data-bs-toggle="tab" data-bs-target="#pemasukan-barang" type="button" role="tab" aria-controls="pemasukan-barang" aria-selected="true">
-                      <span id="pm-brg">Pemasukan Barang</span>
-                    </button>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" id="pm-brg">Pemasukan Barang</a>
                 </li>
-                <!----- PENGELUARAN BARANG TAB ----->
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pengeluaran-barang-tab" data-bs-toggle="tab" data-bs-target="#pengeluaran-barang" type="button" role="tab" aria-controls="pengeluaran-barang" aria-selected="false">
-                      <span id="pg-brg">Pengeluaran Barang</span>
-                    </button>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#" id="pg-brg">Pengeluaran Barang</a>
                 </li>
-                <!------ PENARIKAN BARANG TAB ----->
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="penarikan-barang-tab" data-bs-toggle="tab" data-bs-target="#penarikan-barang" type="button" role="tab" aria-controls="penarikan-barang" aria-selected="false">
-                        <span id="pnk-brg">Penarikan Barang</span>
-                      </button>
-                  </li>
-                <!----- HISTORI BARANG TAB -----> 
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="histori-barang-tab" data-bs-toggle="tab" data-bs-target="#histori-barang" type="button" role="tab" aria-controls="histori-barang" aria-selected="false">
-                      <span id="hst-brg">Histori Barang</span>
-                    </button>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#" id="pnk-brg">Penarikan Barang</a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#" id="hst-brg">Histori Barang</a>
+                </li>
+              </ul>
 
-            <!----- TABS CONTENT ------->
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="pemasukan-barang" role="tabpanel" aria-labelledby="pemasukan-barang-tab">
-                    <div class="container-xl bg-light p-2">
-                        <div class="container">
-                            <!---- SEARCH & FILTER CONTENT ---->
-                            <div class="d-flex align-items-center">
-                                <p style="margin: 0;">Search: </p>
-                                <input type="text" placeholder="Cari Deskripsi Barang" id="searchBar" class="ms-2">
-                                <button class="btn btn-light border border-dark mx-2"> More Filter </button>
-                            </div>
-                        </div>
-                        <div class="container">
+            <!----- CONTAINER CONTENT FROM TAB  ------->
+            <div class="container-md bg-light p-2">
+                <div class="container-lg ">
                             
+                    <div class="d-flex align-items-center">
+                        <p style="margin: 0;">Search: </p>
+                        <input type="text" placeholder="Cari Deskripsi Barang" id="searchBar" class="ms-2">
+
+                        <!----- DROPDOWN FILTER BARANG----->
+                        <div class="dropdown">
+                            <button class="btn btn-light border border-dark mx-2 dropdown-toggle" type="button" id="filterButton" aria-expanded="false" data-bs-toggle="dropdown"> More Filter </button>
+
+                            <div class="dropdown-menu" width="800">
+
+                            <form class="px-2 py-1">
+                                <div class="row">
+
+                                    <div class="col-md border">
+                                        <!--- FLT. TGL --->
+                                        <div class="mb-2">
+                                            <label for="tgl_pemasukan">Tgl. Pemasukan</label>
+                                            <input type="date" class="form-control" id="tgl_pemasukan" placeholder="dd-mmm-yyyy" value=""
+                                            min="1999-01-01" max="2050-12-31">
+                                        </div>
+                                        <!--- FLT. DOKUM --->
+                                        <div class="mb-2">
+                                            <label for="no_dokumen_bc">No. Dokumen BC</label>
+                                            <input type="text" class="form-control" id="no_dokumen_bc">
+                                        </div>
+                                        <!--- FLT. WAKTU --->
+                                        <div class="mb-2">
+                                            <label for="waktu">Waktu</label>
+                                            <input type="time" class="form-control" id="no_dokumen_bc">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md border">
+                                        <!--- FLT. MEREK --->
+                                        <div class="mb-2">
+                                            <label for="merek_brg">Merek Barang</label>
+                                            <input type="text" class="form-control" id="merek_brg">
+                                        </div>
+                                        <!--- FLT. HARGA --->
+                                        <div class="mb-2">
+                                            <label for="harga_per_unit">Harga Per Unit</label>
+                                            <input type="number" class="form-control" id="harga_per_unit" step="0.01">
+                                        </div>
+                                        <!--- FLT. JENIS OPTION --->
+                                        <div class="mb-2">
+                                            <label for="jenis_barang">Jenis Barang</label>
+                                            <select id="jenis_barang" class="form-select">
+                                                <option selected>--PILIH JENIS--</option>
+                                                <option value="1">Kosmetik</option>
+                                                <option value="2">Perhiasan</option>
+                                                <option value="3">Jam Tangan</option>
+                                                <option value="4">Fashion</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--- BUTTON DIVIDER --->
+                                    <div class="dropdown-divider"></div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary" style="font-weight: 700;">Filter</button>
+                                        <button type="reset" class="btn btn-danger ms-2" style="font-weight: 700;">Reset</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
                         </div>
-                    </div>    
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="pengeluaran-barang" role="tabpanel" aria-labelledby="pengeluaran-barang-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum similique sed quas repellat! Fugiat saepe nihil, eaque itaque neque mollitia, asperiores tempore accusamus, libero quas accusantium laborum voluptas impedit. Expedita.</div>
-                <div class="tab-pane fade" id="penarikan-barang" role="tabpanel" aria-labelledby="penarikan-barang-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum similique sed quas repellat! Fugiat saepe nihil, eaque itaque neque mollitia, asperiores tempore accusamus, libero quas accusantium laborum voluptas impedit. Expedita.</div>
-                <div class="tab-pane fade" id="histori-barang" role="tabpanel" aria-labelledby="histori-barang-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. In ullam necessitatibus maiores, delectus, autem numquam iusto cupiditate aliquam fuga id nihil eius asperiores neque voluptatem, natus corporis voluptatibus voluptas consequatur?</div>
             </div>
-              
+
         </div>
     </section>
 
@@ -126,5 +167,6 @@
     <footer>
         <div class="footer">© 2022. PT. Aura Cantik. Created By Muhammad Farhan Tri Budiman</div>
     </footer>
+    <script src="../client/public/assets/js/bootstrap_v5.0.2/bootstrap.bundle.min.js"></script>
 </body>
 </html>
