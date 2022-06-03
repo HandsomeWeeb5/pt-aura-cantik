@@ -1,6 +1,12 @@
 // CUSTOM DROPDOWN FOR FILTER
 $dropdown-min-width: 25rem;
 
+// CUSTOM TABLE PADDING 
+$table-cell-padding-y:        .2rem;
+$table-cell-padding-x:        .5rem;
+$table-cell-padding-y-sm:     .10rem;
+$table-cell-padding-x-sm:     .25rem;
+
 // IMPORT BOOTSTRAP
 @import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
 

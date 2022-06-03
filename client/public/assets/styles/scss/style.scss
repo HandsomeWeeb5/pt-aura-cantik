@@ -1,5 +1,6 @@
-// IMPORT BOOTSTRAP
+// IMPORT BOOTSTRAP 
 @use "../scss/custom";
+// ! JANGAN HAPUS FILE CUSTOM DI FOLDER SCSS, BIKIN WEBSITE HANCUR
 
 // Import color style
 @use "../scss/components/color-style";
@@ -9,6 +10,7 @@
 @use "../scss/components/sidebar";
 @use "../scss/components/icon";
 @use "../scss/components/navtab";
+@use "../scss/components/table";
 
 * {
     ::after { 
@@ -33,6 +35,10 @@ body{
     ;
 }
 
+p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 /*header{
     display: block;

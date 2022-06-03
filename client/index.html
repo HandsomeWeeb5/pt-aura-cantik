@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakarta Duty Free</title>
     <link rel="icon" href="/client/public/assets/img/favicon.ico" type="image/x-icon">
+    <!---- IMPORT CSS ---->
     <link rel="stylesheet" href="/client/public/assets/styles/css/style.css">
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!---- IMPORT BOOTSTRAP ---->
+    <script src="../client/public/assets/js/bootstrap_v5.0.2/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     
@@ -117,7 +119,7 @@
                                         <!--- FLT. WAKTU --->
                                         <div class="mb-2">
                                             <label for="waktu">Waktu</label>
-                                            <input type="time" class="form-control" id="no_dokumen_bc">
+                                            <input type="time" class="form-control" id="waktu" value="00:00:00">
                                         </div>
                                     </div>
 
@@ -160,6 +162,141 @@
                 </div>
             </div>
 
+            <!---- TABLE CONTAINER ---->
+            <div class="container-lg mt-3 overflow-scroll table-container-height">
+                <!---<iframe src="./public/src/html/table_pemasukan.html" width="1050" height="300"></iframe>--->
+                <table class="table table-bordered border table-custom table-hover">
+                    <thead class="table-secondary">
+                        <tr class="d-flex">
+                            <th scope="col"><input type="checkbox" name="select-all-items" id="select-all-items"></th>
+                            <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
+                            <th scope="col" class="th-tgl-pemasukan">Tgl. Pemasukan</th>
+                            <th scope="col" class="th-jenis-brg">Jenis Barang</th>
+                            <th scope="col" class="th-waktu">Waktu</th>
+                            <th scope="col" class="th-merek-brg">Merek Barang</th>
+                            <th scope="col" class="th-no-dokumen-bc">No. Dokumen BC</th>
+                            <th scope="col" class="th-harga-per-unit">Harga Per Unit</th>
+                            <th scope="col" class="th-vendor-item">Vendor Item</th>
+                            <th scope="col" class="th-hs-code">HS Code</th>
+                            <th scope="col" class="th-barcode-brg">Barcode Barang</th>
+                            <th scope="col" class="th-aksi-data">Aksi Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+
+            <!---- ITEM COUNT DISPLAY & PAGINATION CONTAINER ---->
+            <div class="container-lg d-flex mt-2 mb-1">
+                <!---- DISPLAY COUNT CONTAINER ---->
+                <div class="container" aria-label="display-count-container" height="20">
+                    <span id="total-item-count" class="mx-2"><strong>Total Item: 4</strong></span>
+                    <span id="total-price-items" class="mx-2"><strong>Total Semua Harga: 123.56 USD</strong></span>
+                </div>
+                
+                <!---- PAGINATION ---->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">Next</a></li>
+                    </ul>
+                  </nav>
+            </div>
+
+            <!---- BUTTON GROUP FOR TABLE ---->
+            <div class="container-lg d-flex my-2 justify-content-center">
+                <button type="button" class="btn btn-success" style="font-weight: 700;">Tambah Barang</button>
+                <button type="button" class="btn btn-danger ms-2" style="font-weight: 700;">Hapus Barang</button>
+                <button type="button" class="btn btn-primary ms-2" style="font-weight: 700;">Kirim Barang</button>
+            </div>
+
         </div>
     </section>
 
@@ -167,6 +304,6 @@
     <footer>
         <div class="footer">© 2022. PT. Aura Cantik. Created By Muhammad Farhan Tri Budiman</div>
     </footer>
-    <script src="../client/public/assets/js/bootstrap_v5.0.2/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>
