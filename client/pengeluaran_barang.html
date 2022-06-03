@@ -86,7 +86,49 @@
                     <a href="#" class="nav-link" aria-current="page" id="hst-brg">Histori Barang</a>
                 </li>
             </ul>
+
+            <!---- CONTAINER CONTENT FROM TAB ---->
+            <div class="container-md bg-light p-2">
+
+                <!---- FILTER & KERANJANG CONTAINER ---->
+                <div class="container-lg" aria-label="filter-keranjang-container">
+
+                    <div class="row">
+                        <!---- FORM FILTER ---->
+                        <div class="col-3 p-3">
+                            <form action="
+                            ">
+                                <!---- TEXT EXPLAIN ---->
+                                <p style="font-weight: bold;">Filter untuk Lampiran PPB-TBB</p>
+                                <p>Masukkan filter untuk menyaring barang mana yang akan dikirim hingga barang itu diubah di keranjang barang.</p>
+                                <!----- F.L. TGL PEMASUKAN FILTER ----->
+                                <label for="tgl_pemasukan_filter" class="form-label">Tgl. Pemasukan</label>
+                                <input type="text" class="form-control" id="tgl_pemasukan_filter">
+                                <!----- F.L. JENIS DOKUMEN ----->
+                                <label for="jenis_dokumen_bc" class="form-label">Jenis Dokumen BC</label>
+                                <input type="text" class="form-control" id="jenis_dokumen_bc" value="BC 2.3">
+                                <!----- F.L. NO. DOKUMEN BC ----->
+                                <label for="no_dokumen_bc" class="form-label">Jenis Dokumen BC</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Min...">
+                                    <span class="input-group-text"> - 
+                                    </span>
+                                    <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Max...">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-7">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!--- Footer --->
+    <footer>
+        <div class="footer">© 2022. PT. Aura Cantik. Created By Muhammad Farhan Tri Budiman</div>
+    </footer>
 </body>
 </html>
