@@ -67,7 +67,7 @@
 
     <!---- CONTENT CONTAINER ---->
     <section class="content-body">
-        <div class="container-lg mx-auto">
+        <div class="container-lg mx-auto mb-5">
             <!---- DISPLAY TABLE ---->
             <span class="display-text">Warehouse</span>
         
@@ -108,18 +108,81 @@
                                 <label for="jenis_dokumen_bc" class="form-label">Jenis Dokumen BC</label>
                                 <input type="text" class="form-control" id="jenis_dokumen_bc" value="BC 2.3">
                                 <!----- F.L. NO. DOKUMEN BC ----->
-                                <label for="no_dokumen_bc" class="form-label">Jenis Dokumen BC</label>
+                                <label for="no_dokumen_bc" class="form-label">Nomor  Dokumen BC</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Min...">
                                     <span class="input-group-text"> - 
                                     </span>
                                     <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Max...">
                                 </div>
+                                <!----- F.L. MEREK BARANG ----->
+                                <label for="merek_barang" class="form-label">Merek Barang</label>
+                                <input type="text" class="form-control" id="merek_barang">
+                                <!----- F.L. JENIS BARANG ----->
+                                <label for="jenis_barang" class="form-label">Jenis Barang</label>
+                                <select name="jenis-barang" id="jenis_barang" class="form-select">
+                                    <option selected>-- PILIH --</option>
+                                    <option value="1">Kosmetik</option>
+                                    <option value="2">Perhiasan</option>
+                                    <option value="3">Jam Tangan</option>
+                                    <option value="4">Fashion</option>
+                                </select>
+                                <!----- FILTER & STORE QUERY BUTTON----->
+                                <button class="btn btn-primary mt-3" id="filter-btn">
+                                    Filter Tabel Keranjang
+                                </button>
+                                <p id="filter-form-error-display">Filter tabel keranjang harus diisi semua!</p>
                             </form>
                         </div>
-                        <div class="col-7">
-
+                        <!---- TABLE KERANJANG BARANG MASUK ---->
+                        <div class="col-7 p-3">
+                            <!---- TITLE CONTAINER ---->
+                            <div class="container-lg mb-3">
+                                <p><strong>Keranjang Barang Masuk</strong><br/>
+                                Tabel yang berisi barang diambil dari gudang barang masuk
+                                </p>
+                            </div>
+                            <!---- TABLE KERANJANG CONTAINER---->
+                            <div class="overflow-scroll table-container-size-pgl border ms-4">
+                                <table class="table table-bordered border table-hover table-custom-pgl">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <!---- CHECKBOX ALL -->
+                                            <th scope="col"><input type="checkbox" name="select-all-items"id="select-all-items"></th>
+                                            <!-------------------->
+                                            <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
+                                            <th scope="col">Tgl. Pemasukan</th>
+                                            <th scope="col">Jenis Barang</th>
+                                            <th scope="col">Merek Barang</th>
+                                            <th scope="col">No. Dokumen BC</th>
+                                            <th scope="col">Barcode Barang (No. Reff)</th>
+                                            <th scope="col">Harga Per Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                                            <td class="">Produk Kosmetik Master</td>
+                                            <td class="">21/06/2022</td>
+                                            <td class="">Kosmetik</td>
+                                            <td class="">Master</td>
+                                            <td class="">000000</td>
+                                            <td class="">76543210</td>
+                                            <td class="">69.50</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="container-lg mx-3" aria-label="check-before">
+                    <p style="text-align: center;">Check filterisasi & tambahkan data dari keranjang yang di-filter akan divalidasi ke lampiran</p>
+                    <div class="d-flex justify-content-center">
+                        <div id="filter-check" class="filter-check">Filter Form: Not Ok</div>
+                        <div id="keranjang-check" class="keranjang-check">Keranjang Selection: Not Ok</div>
                     </div>
                 </div>
             </div>

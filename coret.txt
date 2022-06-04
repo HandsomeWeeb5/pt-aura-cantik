@@ -1,3 +1,6 @@
 1). section.content-body>div.container-lg.mx-auto>span.display-text
 2). ul.nav.nav-tabs>li.nav-item*4
 3). a.nav-link[aria-current=page][href=#]#pm-brg
+
+table keranjang
+1). div.container-lg.mt-3.overflow-scroll.table-container-height>table.table-bordered.border.table-custom.table-hover>thead.table-secondary+tbody
