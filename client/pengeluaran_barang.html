@@ -129,7 +129,7 @@
                                 </select>
                                 <!----- FILTER & STORE QUERY BUTTON----->
                                 <button class="btn btn-primary mt-3" id="filter-btn">
-                                    Filter Tabel Keranjang
+                                    <strong>Filter Tabel Keranjang</strong>
                                 </button>
                                 <p id="filter-form-error-display">Filter tabel keranjang harus diisi semua!</p>
                             </form>
@@ -172,18 +172,192 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                
+                            </div>
+                            <div class="bg-warning p-2 ms-4" style="width: 770px;">
+                                <button type="button" class="btn btn-danger" id="delete-items-btn">
+                                    <strong>Hapus Barang (x)</strong>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!----- FILTER CHECKER CONTAINER ----->
                 <div class="container-lg mx-3" aria-label="check-before">
                     <p style="text-align: center;">Check filterisasi & tambahkan data dari keranjang yang di-filter akan divalidasi ke lampiran</p>
-                    <div class="d-flex justify-content-center">
-                        <div id="filter-check" class="filter-check">Filter Form: Not Ok</div>
-                        <div id="keranjang-check" class="keranjang-check">Keranjang Selection: Not Ok</div>
+                    <div class="d-flex justify-content-center my-2">
+                        <div id="filter-check">Filter Form: Not Ok</div>
+                        <div id="keranjang-check">Keranjang Selection: Not Ok</div>
                     </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-info p-1" id="check-add-lampiran">
+                            <strong>Check & Tambah Lampiran</strong>
+                        </button>
+                    </div>
+                </div>
+
+                <!----- LAMPIRAN CONTAINER ------>
+                <div class="container-lg mt-2">
+                    <h2>Daftar Lampiran</h2>
+
+                    <!---- LIST LAMPIRAN & INPUT LAPORAN CONTAINER ---->
+                    <div class="container-lg">
+                        <div class="row">
+                            <!---- DAFTAR LAMPIRAN ---->
+                            <div class="col-lg-8">
+                                <div class="kotak-lampiran overflow-auto" aria-label="daftar-lampiran">
+                                    <!---- LAMPIRAN ITEM ---->
+                                    <div class="lampiran-item border border-dark mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <h5 id="lampiran-number">Lampiran Ke: 1</h5>
+                                            <button id="remove-btn">
+                                                <span class="icon-close-svgrepo-com"></span>
+                                            </button>
+                                        </div>
+                                        <!---- LAMPIRAN INFO DISPLAY ---->
+                                        <div class="row p-2">
+                                            <div class="col border">
+                                                <p id="tgl-pemasukan-lampiran">Tgl. Dokumen Masuk: 23-Feb-2020</p>
+                                                <p id="jenis-dokumen-lampiran">Jenis Dokumen BC: BC 2.3</p>
+                                                <p id="jenis-barang-lampiran">Jenis Barang: Kosmetik</p>
+                                            </div>
+                                            <div class="col border">
+                                                <p id="no-dokumen-bc-lampiran">Nomor Dokumen BC: 000942-001020</p>
+                                                <p id="merek-barang-lampiran">Merek Barang: La Praire</p>
+                                            </div>
+                                        </div>
+                                        <!---- TABEL 3 ATRIBUT BARANG ---->
+                                        <table class="table table-bordered table-light">
+                                            <thead class="table-info">
+                                                <th scope="col">Kode Barang (Reff)</th>
+                                                <th scope="col">Deskripsi Barang</th>
+                                                <th scope="col">Qty</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>7611773097710</td>
+                                                    <td>LAP Supreme Balm Cleaner</td>
+                                                    <td>1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p id="tagnames_index"><strong>Index: Kosmetik La Praire DF6</strong></p>
+                                                <p id="tagnames_dokumen"><strong>Dokumen Pemasukan: BC 2.3 000942-001020</strong></p>
+                                            </div>
+                                            <div class="col d-flex justify-content-end">
+                                                <p id="total-item-lampiran">
+                                                <strong>Total Barang: 3 Pcs</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---- LAMPIRAN ITEM ---->
+                                    <div class="lampiran-item border border-dark mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <h5 id="lampiran-number">Lampiran Ke: 1</h5>
+                                            <button id="remove-btn">
+                                                <span class="icon-close-svgrepo-com"></span>
+                                            </button>
+                                        </div>
+                                        <!---- LAMPIRAN INFO DISPLAY ---->
+                                        <div class="row p-2">
+                                            <div class="col border">
+                                                <p id="tgl-pemasukan-lampiran">Tgl. Dokumen Masuk: 23-Feb-2020</p>
+                                                <p id="jenis-dokumen-lampiran">Jenis Dokumen BC: BC 2.3</p>
+                                                <p id="jenis-barang-lampiran">Jenis Barang: Kosmetik</p>
+                                            </div>
+                                            <div class="col border">
+                                                <p id="no-dokumen-bc-lampiran">Nomor Dokumen BC: 000942-001020</p>
+                                                <p id="merek-barang-lampiran">Merek Barang: La Praire</p>
+                                            </div>
+                                        </div>
+                                        <!---- TABEL 3 ATRIBUT BARANG ---->
+                                        <table class="table table-bordered table-light">
+                                            <thead class="table-info">
+                                                <th scope="col">Kode Barang (Reff)</th>
+                                                <th scope="col">Deskripsi Barang</th>
+                                                <th scope="col">Qty</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>7611773097710</td>
+                                                    <td>LAP Supreme Balm Cleaner</td>
+                                                    <td>1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p id="tagnames_index"><strong>Index: Kosmetik La Praire DF6</strong></p>
+                                                <p id="tagnames_dokumen"><strong>Dokumen Pemasukan: BC 2.3 000942-001020</strong></p>
+                                            </div>
+                                            <div class="col d-flex justify-content-end">
+                                                <p id="total-item-lampiran">
+                                                <strong>Total Barang: 3 Pcs</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <p id="total-all-lampiran"><strong>Total Seluruh: 6 Pcs</strong></p>
+                            </div>
+    
+                            <!---- INPUT TAMBAHAN LAPORAN ---->
+                            <div class="col-lg-4">
+                                <h4><strong>Input Laporan PPB-TBB</strong></h4>
+                                <p id="display-error">Input Wajib diisi semua</p>
+                                <div class="container border p-1">
+                                    <form>
+                                        <!---- R.I. NO. LAPORAN ---->
+                                        <div>
+                                            <label class="form-label">Nomor Laporan:</label><br>
+                                            <input type="radio" class="form-check-input" name="auto-increment-nomor" value="auto-increment-nomor" checked>
+                                            <label for="auto-increment-nomor" class="form-label">Auto-Increment (Penomoran Otomatis)</label>
+                                            <input type="radio" class="form-check-input" checked="false" name="nomor-manual"
+                                            value="nomor-manual" id="nomor-manual">
+                                            <label for="nomor-manual" class="form-label">Nomor Manual: </label>
+                                            <input type="text" class="form-control mt-2" placeholder="Nomor Manual.." id="nomor-manual">
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="form-label">Tanggal Laporan:</label><br>
+                                            <input type="radio" class="form-check-input" name="auto-increment-date" id="auto-increment-date">
+                                            <label for="auto-increment-date" class="form-label">Auto-Increment (Penanggalan Otomatis)</label>
+                                            <input type="radio" class="form-check-input" name="date-manual"
+                                            value="date-manual" id="date-manual">
+                                            <label for="date-manual" class="form-label">Tanggal Manual: </label>
+                                            <input type="text" class="form-control mt-2" placeholder="Tanggal Manual.." id="date-manual">
+                                        </div>
+
+                                        <label for="alamat-penimbunan" class="form-label">Alamat Ruang Penimbunan</label>
+                                        <input type="text" id="alamat-penimbunan">
+                                        
+                                        <label for="alamat-penjualan" class="form-label">Alamat Ruang Penjualan</label>
+                                        <input type="text" id="alamat-penjualan">
+                                        
+                                        <label for="penanggung-jawab" class="form-label">Nama Pg. Jawab TBB</label>
+                                        <input type="text" id="penanggung-jawab"><br>
+                                        
+                                        <label for="jabatan" class="form-label">Jabatan TBB</label><br>
+                                        <input type="text" id="jabatan"><br>
+                                        
+                                        <label for="lokasi-tempat" class="form-label">Lokasi Tempat</label><br>
+                                        <select id="lokasi-tempat" class="form-select">
+                                            <option selected>-- PILIH --</option>
+                                            <option value="DF6">DF6</option>
+                                        </select>
+                                        <button class="btn btn-info mt-3" type="submit" id="save-lpr-btn"><strong>Save Input Laporan</strong></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <button type="button" class="btn btn-warning my-3"><strong>Check-up & Print PPB-TBB</strong></button>
                 </div>
             </div>
         </div>
