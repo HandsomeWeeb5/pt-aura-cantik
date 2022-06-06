@@ -4,7 +4,7 @@
   "description": "NodeJS, Express, Svelte (Framework), SQL (MariaDB), Apache with XAMPP",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
     "bootstrap": "^5.0.2",
     "clocklet": "^0.3.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
     "mariadb": "^3.0.0",
     "morgan": "^1.10.0",
