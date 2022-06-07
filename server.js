@@ -14,12 +14,15 @@ app.use(express.urlencoded(
 //* Parsing (uraikan) data
 app.use(express.json())
 
-
+//* Set view Engine EJS
+app.set("view engine", 'ejs'); 
 
 //* buat Static files
 //app.use(express.static('./public'))
 
-/* ======= TEMPLATE VIEW ENGINE FOR HTML ========= */
-app.engine('ejs', ejs.renderFile);
+/* ======== RENDER PAGES WITH URL ======== */
+app.get('/', (res, req) => {
+    
+})
 
 /*======== MULTIPLE PAGE ROUTER ==========*/
