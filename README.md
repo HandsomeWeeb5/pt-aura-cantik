@@ -6,4 +6,4 @@
     - **view** ('menguraikan view html files')
 
 #### **dbconfig**
-1). Gunakan 
+1). 

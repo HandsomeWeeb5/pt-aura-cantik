@@ -4,6 +4,8 @@ const path = require('path');
 const { readFileSync } = require('fs'); 
 const ejs = require('ejs'); //? INFO (ejs = "Embedded JavaScript templates")
 
+const dbconfig = require('./modules/dbconfig')
+
 /* ======= EXPRESS REQUIREMENT ====== */
 const app = express();
 
@@ -38,3 +40,4 @@ app.listen(7000, () => {
     console.log('listening to server, http://localhost:7000')
 })
 
+/* ========= READ DATA FROM DATABASE MARIADB ========*/
