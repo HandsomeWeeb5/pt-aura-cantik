@@ -4,10 +4,13 @@ const mariadb = require('mariadb');
 //* Ambil semua dari file env
 require('dotenv').config();
 
+//* instance database
 let instance = null;
 
+
+
 //* Koneksi database dari mysql phpmyadmin
-// const connection = mariadb.createConnection({
+// const connect = mariadb.createConnection({
 //     host: process.env.DB_HOST,
 //     user: process.env.DB_USER,
 //     password: process.env.DB_PASSWORD,

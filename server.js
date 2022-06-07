@@ -4,7 +4,6 @@ const path = require('path');
 const { readFileSync } = require('fs'); 
 const ejs = require('ejs'); //? INFO (ejs = "Embedded JavaScript templates")
 
-
 /* ======= EXPRESS REQUIREMENT ====== */
 const app = express();
 
@@ -17,17 +16,25 @@ app.use(express.urlencoded(
 app.use(express.json())
 
 //* buat Static files
-app.use(express.static(__dirname + 'public'))
+app.use(express.static('client/public'))
+
+//* Set view engine
+app.set('views', './client/views')
+app.set('view engine', 'ejs')
 
 /* ======== RENDER PAGES WITH URL ======== */
 app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, '/client/public/index.html'))
-    res.writeHead(200, { "content-type" : "text/html" })
-    res.write(readFileSync('client/index.html'))
-    res.end()
+    res.render('pemasukan')
 })
+     
+app.get('/pengeluaran', (req, res) => {
+    res.render('pengeluaran')
+})
+
+// app.engine('ejs', ejs)
 
 /*======== MULTIPLE PAGE ROUTER ==========*/
 app.listen(7000, () => {
     console.log('listening to server, http://localhost:7000')
 })
+

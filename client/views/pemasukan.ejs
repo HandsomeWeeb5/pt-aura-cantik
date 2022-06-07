@@ -1,69 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jakarta Duty Free</title>
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <!---- IMPORT CSS ---->
-    <link rel="stylesheet" href="assets/styles/css/style.css">
-    <!---- IMPORT BOOTSTRAP ---->
-    <script src="assets/js/bootstrap_v5.0.2/bootstrap.bundle.min.js"></script>
-</head>
+<%- include('partials/head');  %> 
+
 <body>
     
-    <!--- Account Header --->
-    <header>
-        <div class="logo-picture">
-            <img src="/client/public/assets/img/logo_duty_free_2.png" alt="Logo Jakarta Duty Free berlambang Lapisan Bawang Warna-warni termasuk Merah, Orange, Kuning, Hijau, dan Biru dan juga disamping ada tulisan Jakarta Duty Free">
-        </div>
-        <div class="account-wrapper">
-            <!---- NOTIFICATION BUTTON ---->
-            <a href="#" class="notification">
-                <span class="icon-bell-alarm-notification-notify-svgrepo-com"></span>
-            </a>
-            <!----- PHOTO PROFILE ---->
-            <div class="photo-profile">
-                <div class="photo-circle"></div>
-            </div>
-
-            <!----- DROPDOWN MENU ----->
-            <div class="account-menu-dropdown">
-                <div class="account-menu-wrapper">
-                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                        Manager
-                    <!--- <span class="icon-caret-down-outline-svgrepo-com"></span> --->
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Account Setting</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </header>
-
-    <!--- Sidebar --->
-    <section class="sidebar">
-        <ul class="menus-wrapper">
-            <li>
-                <a href="#" id="warehouse-menu" class="flex-link-item">
-                    <div class="icon-block">
-                        <span class="icon-house-svgrepo-com"></span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="settings-menu" class="flex-link-item">
-                    <div class="icon-block">
-                        <span class="icon-settings-gear-setting-svgrepo-com"></span>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </section>
+    <%- include('partials/header'); %> 
+    
+    <%- include('partials/sidebar'); %> 
 
     <!--- Content --->
     <section class="content-body">
@@ -74,10 +15,10 @@
             <!---- NAVIGATION TABS ---->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" id="pm-brg">Pemasukan Barang</a>
+                  <a class="nav-link active" aria-current="page" href="/" id="pm-brg">Pemasukan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#" id="pg-brg">Pengeluaran Barang</a>
+                    <a class="nav-link" aria-current="page" href="/pengeluaran" id="pg-brg">Pengeluaran Barang</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="#" id="pnk-brg">Penarikan Barang</a>
@@ -88,7 +29,7 @@
             </ul>
 
             <!----- CONTAINER CONTENT FROM TAB  ------->
-            <div class="container-md bg-light p-2">
+            <div class="container-md bg-light p-2 mb-4">
                 <div class="container-lg ">
                             
                     <div class="d-flex align-items-center">

@@ -4,7 +4,8 @@
   "description": "NodeJS, Express, Svelte (Framework), SQL (MariaDB), Apache with XAMPP",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "test db" : "node dbconfig.js"
   },
   "repository": {
     "type": "git",
