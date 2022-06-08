@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS tambahkanBarang;
 DELIMITER //
 CREATE PROCEDURE tambahkanBarang(
     namaBarang VARCHAR(200),
-    nomorDokumen INT(6) ZEROFILL,
+    nomorDokumen VARCHAR(50),
     nomorJenisBarang INT(6),
     merekBarang VARCHAR(50),
     hargaPerUnit DECIMAL(10, 2),

@@ -4,3 +4,28 @@
 
 table keranjang
 1). div.container-lg.mt-3.overflow-scroll.table-container-height>table.table-bordered.border.table-custom.table-hover>thead.table-secondary+tbody
+
+Method REST API urls:
+GET = api/barang => ambil semua data barang
+GET = api/barang/:id => ambil data barang sesuai id barang
+POST = api/barang => buat data barang baru
+PUT = api/barang/:id => update data barang per id
+DELETE = api/barang/:id => hapus data barang per id
+DELETE = api/barang => hapus semua data barang
+
+// store query from mysql phpmyadmin
+const selectAll = `SELECT
+        b.deskripsi_brg,
+        DATE_FORMAT(d.tgl_pemasukan, '%d/%m/%y') AS tgl_pemasukan,
+        j.jenis_barang,
+        b.waktu,
+        b.merek_brg,
+        b.harga_per_unit,
+        b.vendor_item,
+        b.hs_code,
+        b.barcode_brg
+            FROM 
+        tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen)
+    JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg);`
+
+//* View barang in table
