@@ -35,7 +35,15 @@ async function getMultiple(page = 1){
 
 async function insertData(barang){
     const result = await db.query(
-        `CALL tambahkanBarang(${barang.deskripsi_brg}, ${barang.jenis_barang}, ${barang.merek_brg}, ${barang.harga_per_unit}, ${barang.vendor_item}, ${barang.hs_code}, ${barang.barcode_brg})`
+        `CALL tambahkanBarang(
+            ${barang.deskripsi_brg}, 
+            ${barang.jenis_barang}, 
+            ${barang.merek_brg}, 
+            ${barang.harga_per_unit}, 
+            ${barang.vendor_item}, 
+            ${barang.hs_code}, 
+            ${barang.barcode_brg}
+        )`
     )
 
     let message = 'Penambahan data barang Gagal!'
