@@ -13,6 +13,28 @@ PUT = api/barang/:id => update data barang per id
 DELETE = api/barang/:id => hapus data barang per id
 DELETE = api/barang => hapus semua data barang
 
+data barang json:
+{
+  "data": [
+    {
+      "id_barang": 1,
+      "deskripsi_brg": "Produk Kosmetik Master",
+      "tgl_pemasukan": "08/06/22",
+      "jenis_barang": "Kosmetik",
+      "waktu": "16:20:12",
+      "merek_brg": "Master",
+      "no_dokumen_bc": "000000",
+      "harga_per_unit": "123.45",
+      "vendor_item": "KOSMETIK123",
+      "hs_code": "71179100",
+      "barcode_brg": "765432110"
+    }
+  ],
+  "meta": {
+    "page": 1
+  }
+}
+
 // store query from mysql phpmyadmin
 const selectAll = `SELECT
         b.deskripsi_brg,

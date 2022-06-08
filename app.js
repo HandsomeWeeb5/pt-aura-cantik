@@ -25,6 +25,9 @@ app.use(express.json())
 //* buat Static files
 app.use(express.static('client/public'))
 
+//* website activate with passing out from CORS
+app.use(cors());
+
 //* Set view engine
 app.set('views', './client/views')
 app.set('view engine', 'ejs')
@@ -40,7 +43,7 @@ app.get('/pengeluaran', (req, res) => {
 
 // app.engine('ejs', ejs)
 
-/*======== MULTIPLE PAGE ROUTER ==========*/
+/*======== PARSING DATA WITH ROUTER ==========*/
 //* test route id barang
 
 app.use('/barang' ,barangRouter);

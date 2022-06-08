@@ -85,27 +85,26 @@ DROP PROCEDURE IF EXISTS ubahBarang;
 +). Waktu dapat diubah otomatis jika data barang telah diubah 
 */
 
-DELIMITER //
-CREATE PROCEDURE ubahBarang(
-    idTarget INT(11),
-    u_namaBarang VARCHAR(200),
-    u_nomorDokumen INT(6) ZEROFILL,
-    u_nomorJenisBarang INT(6),
-    u_merekBarang VARCHAR(50),
-    u_hargaPerUnit DECIMAL(10, 2),
-    u_vendorItem VARCHAR(80),
-    u_hsCode VARCHAR(120),
-    u_barcodeBarang VARCHAR(120)
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ubahBarang`(
+    IN `idTarget` INT(11), 
+    IN `u_namaBarang` VARCHAR(200), 
+    IN `u_nomorDokumen` INT(6) ZEROFILL, 
+    IN `u_nomorJenisBarang` INT(6), 
+    IN `u_merekBarang` VARCHAR(50), 
+    IN `u_hargaPerUnit` DECIMAL(10,2), 
+    IN `u_vendorItem` VARCHAR(80), 
+    IN `u_hsCode` VARCHAR(120), 
+    IN `u_barcodeBarang` VARCHAR(120)
 )
 BEGIN
     /* ---- ERROR HANDLING ---- */
     DECLARE sql_error TINYINT DEFAULT FALSE;
     DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
     SET sql_error = TRUE;
-	SELECT @id_target := idTarget;
     
     START TRANSACTION;
-    UPDATE `tb_barang` AS b, `tb_dokumen` AS d
+    UPDATE `tb_barang` AS b JOIN `tb_dokumen` AS d ON b.id_dokumen = d.id_dokumen 
     SET
     	b.deskripsi_brg = u_namaBarang,
     	d.no_dokumen_bc = u_nomorDokumen,
@@ -115,7 +114,7 @@ BEGIN
     	b.vendor_item = u_vendorItem,
     	b.hs_code = u_hsCode,
     	b.barcode_brg = u_barcodeBarang
-    WHERE idTarget = b.id_barang AND b.id_barang = d.id_dokumen;
+    WHERE b.id_barang = idTarget;
 
     IF sql_error = FALSE THEN
         COMMIT;
@@ -125,7 +124,8 @@ BEGIN
         SELECT `Penambahan data Gagal, kesalahan query atau memasukkan data tidak benar`;
         SHOW ERRORS;
     END IF;
-END //
+END$$
+DELIMITER ;
 
 BEGIN
     /* ---- ERROR HANDLING ---- */
@@ -145,3 +145,25 @@ BEGIN
         SHOW ERRORS;
     END IF;
 END
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `hapusBarang`(IN `idTarget` INT(11))
+BEGIN
+    /* ---- ERROR HANDLING ---- */
+    DECLARE sql_error TINYINT DEFAULT FALSE;
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+    SET sql_error = TRUE;
+	
+    START TRANSACTION;
+    DELETE tb_barang, tb_dokumen FROM `tb_barang` INNER JOIN `tb_dokumen` ON (tb_barang.id_dokumen = tb_dokumen.id_dokumen) WHERE id_barang = idTarget;
+    
+    IF sql_error = FALSE THEN
+        COMMIT;
+        SELECT `Penambahan data sukses`;
+    ELSE
+        ROLLBACK;
+        SELECT `Penambahan data Gagal, kesalahan query atau memasukkan data tidak benar`;
+        SHOW ERRORS;
+    END IF;
+END$$
+DELIMITER ;
