@@ -1,10 +1,9 @@
 //* ______ APP.JS _________
 const express = require('express');
-const axios = require('axios');
 const path = require('path');
 const { readFileSync } = require('fs'); 
 const cors = require("cors");
-const ejs = require('ejs'); //? INFO (ejs = "Embedded JavaScript templates")
+//? INFO (ejs = "Embedded JavaScript templates")
 
 const barangRouter = require('./server/routes/barang');
 require('dotenv').config()
@@ -39,6 +38,10 @@ app.get('/', (req, res) => {
      
 app.get('/pengeluaran', (req, res) => {
     res.render('pengeluaran')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
 })
 
 // app.engine('ejs', ejs)

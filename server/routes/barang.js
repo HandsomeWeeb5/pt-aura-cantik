@@ -1,6 +1,6 @@
 //* _________ ROUTES/BARANG.JS _________
 const express = require('express');
-const { route } = require('express/lib/application');
+// const { route } = require('express/lib/application');
 const router = express.Router();
 const barang = require('../services/barang');
 
@@ -12,6 +12,12 @@ router.get('/', async function(req, res, next) {
         console.error(`Error dalam pengambilan data barang `, err.message);
         next(err);
     }
+    /*
+    const { deskripsi_brg, tgl_pemasukan, jenis_barang, waktu, merek_brg, no_dokumen_bc, harga_per_unit, vendor_item, hs_code, barcode_brg } = req.body
+    try {
+        res.render('')
+    }
+    */
 })
 
 /* POST => buat data barang baru */
