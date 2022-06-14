@@ -51,3 +51,20 @@ const selectAll = `SELECT
     JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg);`
 
 //* View barang in table
+async function getMultiple(page = 1){
+    let querySelect = `SELECT
+        b.id_barang,
+        b.deskripsi_brg,
+        DATE_FORMAT(d.tgl_pemasukan, '%d/%m/%y') AS tgl_pemasukan,
+        j.jenis_barang,
+        b.waktu,
+        b.merek_brg,
+        d.no_dokumen_bc,
+        b.harga_per_unit,
+        b.vendor_item,
+        b.hs_code,
+        b.barcode_brg
+        FROM 
+    tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen)
+    JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) LIMIT 10 OFFSET ${offset};`
+    const offset = helper.getOffset(page, config.listPerPage);
