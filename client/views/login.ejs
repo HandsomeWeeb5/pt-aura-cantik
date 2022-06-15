@@ -19,13 +19,14 @@
         <form action="/login" method="post">
             
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username">
+            <input type="text" class="form-control" name="username" id="username" required>
             
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="password">
+            <input type="password" class="form-control" name="password" id="password" required>
 
-            <button type="submit" class="btn btn-primary d-block mx-auto mt-2"><span style="color: white; font-weight: bold;">Login</span></button>
+            <button type="submit" class="btn btn-primary d-block mx-auto my-2"><span style="color: white; font-weight: bold;">Login</span></button>
         </form>
+        <a href="/register" class="secret-btn">Add Account</a>
     </div>
         
     <footer class="w-100 login-height bg-primary border mt-5"><div style="text-align: center; margin-top: 10px; color: white; font-weight: bold;">©2022 PT. Aura Cantik. Created by M. Farhan</div></footer>

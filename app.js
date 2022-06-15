@@ -2,8 +2,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require("cors");
-const connectFlash = require('connect-flash');
+const flash = require('connect-flash');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 //? INFO (ejs = "Embedded JavaScript templates")
 require('dotenv').config()
 
@@ -22,7 +23,7 @@ app.use(express.urlencoded(
 // Parsing (uraikan) data
 app.use(express.json())
 // Nyalakan pesan flash
-app.use(connectFlash())
+app.use(flash())
 // aktifkan untuk perizinan CORS
 app.use(cors());
 //TODO ============================================
