@@ -18,6 +18,18 @@
         <img src="assets/img/logo_duty_free.png" alt="Logo Jakarta Duty Free" class="d-block w-50 mx-auto">
         <form action="/login" method="post">
             
+            <!---- DISPLAY ERROR ---->
+            <div>
+                <% if(errors != "") { %>
+                    <% errors.forEach((item) => { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%- item %>
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% }); %>
+                <% } %>   
+            </div>
+
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" name="username" id="username" required>
             

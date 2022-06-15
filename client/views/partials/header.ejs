@@ -17,12 +17,12 @@
         <div class="account-menu-dropdown">
             <div class="account-menu-wrapper">
                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                    Manager
+                    <% user.fullname %> 
                 <!--- <span class="icon-caret-down-outline-svgrepo-com"></span> --->
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Account Setting</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
