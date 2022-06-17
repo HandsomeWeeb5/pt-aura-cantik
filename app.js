@@ -46,8 +46,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Pasang Website Route
-initLoginRoutes(app);
-
+initLoginRoutes(app); // login system
+// initBarangRoutes(app);
 
 /* ====== SERVER LISTEN ======= */
 app.listen(PORT, () => {

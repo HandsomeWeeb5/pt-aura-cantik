@@ -20,15 +20,16 @@ body {
 
 .secret-btn{
     cursor: pointer;
-    font-size: 11px;
-    color: black;
+    font-size: 12px;
+    color: #fd7e14;
     text-decoration: none;
     position: relative;
     left: 12px;
+    text-align: center;
 }
 
 .secret-btn:hover{
-    color: black !important;
+    color: #fd7e14 !important;
 }
 
 

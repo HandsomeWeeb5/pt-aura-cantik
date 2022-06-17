@@ -53,3 +53,12 @@ header{
 .dropdown-toggle:hover{
     text-decoration: solid #555353 underline;
 }
+
+.text-btn{
+    border: 0;
+    background-color: transparent !important;
+    padding: 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #555353;
+}

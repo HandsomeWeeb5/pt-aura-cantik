@@ -8,21 +8,21 @@ const initPassportLocal = require('../controllers/passport.local.controller');
 const express = require('express');
 const router = express.Router();
 
-// Pasang semua passport
+// Pasang semua passport api
 initPassportLocal();
 
 const initLoginRoutes = (app) => {
-    router.get("/", loginController.checkLoggedIn, pemasukanController.handlePemasukan);
-    router.get("/login", loginController.checkLoggedOut, loginController.getPageLogin);
+    router.get("/", loginController.checkLoggedIn, pemasukanController.handlePemasukan); // Login ke Pemasukan Page
+    router.get("/login", loginController.checkLoggedOut, loginController.getPageLogin); // Logout dari Pemasukan
     router.post("/login", passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/", 
         failureRedirect: "/login",
         successFlash: true,
         failureFlash: true
-    }))
-    router.get("/register", registerController.getPageRegister);
-    router.post("/register", auth.validateRegister, registerController.createNewUser);
-    router.post("/logout", loginController.postLogOut);
+    })) // Mengecek apakah user sudah benar ada sebelum memasuki halaman home dengan passport
+    router.get("/register", registerController.getPageRegister); // Memasuki halaman register
+    router.post("/register", auth.validateRegister, registerController.createNewUser); // Pasang akun ke dalam database yang akan dijadikan login
+    router.post("/logout", loginController.postLogOut); // Logout Akun ke login
 
     return app.use("/", router);
 };

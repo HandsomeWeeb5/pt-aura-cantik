@@ -1,0 +1,1 @@
+const DBconnection = require('../config/dbconn.config');
