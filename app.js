@@ -6,7 +6,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const configViewEngine = require('./server/config/view.config')
-const initLoginRoutes = require('./server/routes/login.routes')
+const initLoginRoutes = require('./server/routes/login.routes');
+const initBarangRoutes = require('./server/routes/barang.routes');
 //? INFO (ejs = "Embedded JavaScript templates")
 require('dotenv').config()
 
@@ -47,7 +48,7 @@ app.use(passport.session());
 
 // Pasang Website Route
 initLoginRoutes(app); // login system
-// initBarangRoutes(app);
+initBarangRoutes(app); // route barang control
 
 /* ====== SERVER LISTEN ======= */
 app.listen(PORT, () => {

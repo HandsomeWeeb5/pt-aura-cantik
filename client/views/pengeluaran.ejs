@@ -18,122 +18,201 @@
                     <a href="/" class="nav-link" aria-current="page" id="pm-brg">Pemasukan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/pengeluaran_barang" class="nav-link active" aria-current="page" id="pg-brg">Pengeluaran Barang</a>
+                    <a href="/pengeluaran" class="nav-link active" aria-current="page" id="pg-brg">Pengeluaran Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" aria-current="page" id="pnk-brg">Penarikan Barang</a>
+                    <a href="/penarikan" class="nav-link" aria-current="page" id="pnk-brg">Penarikan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" aria-current="page" id="hst-brg">Histori Barang</a>
+                    <a href="/histori" class="nav-link" aria-current="page" id="hst-brg">Histori Barang</a>
                 </li>
             </ul>
 
             <!---- CONTAINER CONTENT FROM TAB ---->
-            <div class="container-md bg-light p-2">
+            <div class="container-md bg-light p-3">
 
-                <!---- FILTER & KERANJANG CONTAINER ---->
-                <div class="container-lg" aria-label="filter-keranjang-container">
+                <!----- FORM INPUT LAMPIRAN PPB-TBB CONTAINER ----->
+                <div class="container p-3 bg-warning rounded">
+                    <form action="" method="post">
+                        
+                        <!----- FIRST ROW ----->
+                        <div class="row my-1">
+                            <div class="d-flex">
+                                <!---- NO. DOKUMEN BC MIN & MAX INPUT ---->
+                                <label for="no-dokumen-bc">No. Dokumen BC:</label>
+                                <input type="text" name="min-no-dokumen-bc" id="no-dokumen-bc">
+                                <span> - </span>
+                                <input type="text" name="max-no-dokumen-bc" id="no-dokumen-bc">
+                            </div>
+                        </div>
 
-                    <div class="row">
-                        <!---- FORM FILTER ---->
-                        <div class="col-3 p-3">
-                            <form action="">
-                                <!---- TEXT EXPLAIN ---->
-                                <p style="font-weight: bold;">Filter untuk Lampiran PPB-TBB</p>
-                                <p>Masukkan filter untuk menyaring barang mana yang akan dikirim hingga barang itu diubah di keranjang barang.</p>
-                                <!----- F.L. TGL PEMASUKAN FILTER ----->
-                                <label for="tgl_pemasukan_filter" class="form-label">Tgl. Pemasukan</label>
-                                <input type="text" class="form-control" id="tgl_pemasukan_filter">
-                                <!----- F.L. JENIS DOKUMEN ----->
-                                <label for="jenis_dokumen_bc" class="form-label">Jenis Dokumen BC</label>
-                                <input type="text" class="form-control" id="jenis_dokumen_bc" value="BC 2.3">
-                                <!----- F.L. NO. DOKUMEN BC ----->
-                                <label for="no_dokumen_bc" class="form-label">Nomor  Dokumen BC</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Min...">
-                                    <span class="input-group-text"> - 
-                                    </span>
-                                    <input type="text" class="form-control" id="no_dokumen_bc" placeholder="Max...">
+                        <!----- SECOND ROW ---->
+                        <div class="row my-1">
+                            <div class="d-flex justify-content-between">
+                                <!---- JENIS DOKUMEN INPUT ---->
+                                <div>
+                                    <label for="jenis-dokumen" class="form-label">Jenis Dokumen:</label>
+                                    <input type="text" name="jenis-dokumen" id="jenis-dokumen">
                                 </div>
-                                <!----- F.L. MEREK BARANG ----->
-                                <label for="merek_barang" class="form-label">Merek Barang</label>
-                                <input type="text" class="form-control" id="merek_barang">
-                                <!----- F.L. JENIS BARANG ----->
-                                <label for="jenis_barang" class="form-label">Jenis Barang</label>
-                                <select name="jenis-barang" id="jenis_barang" class="form-select">
-                                    <option selected>-- PILIH --</option>
-                                    <option value="1">Kosmetik</option>
-                                    <option value="2">Perhiasan</option>
-                                    <option value="3">Jam Tangan</option>
-                                    <option value="4">Fashion</option>
-                                </select>
-                                <!----- FILTER & STORE QUERY BUTTON----->
-                                <button class="btn btn-primary mt-3" id="filter-btn">
-                                    <strong>Filter Tabel Keranjang</strong>
-                                </button>
-                                <p id="filter-form-error-display">Filter tabel keranjang harus diisi semua!</p>
-                            </form>
-                        </div>
-                        <!---- TABLE KERANJANG BARANG MASUK ---->
-                        <div class="col-7 p-3">
-                            <!---- TITLE CONTAINER ---->
-                            <div class="container-lg mb-3">
-                                <p><strong>Keranjang Barang Masuk</strong><br/>
-                                Tabel yang berisi barang diambil dari gudang barang masuk
-                                </p>
-                            </div>
-                            <!---- TABLE KERANJANG CONTAINER---->
-                            <div class="overflow-scroll table-container-size-pgl border ms-4">
-                                <table class="table table-bordered border table-hover table-custom-pgl">
-                                    <thead class="table-secondary">
-                                        <tr>
-                                            <!---- CHECKBOX ALL -->
-                                            <th scope="col"><input type="checkbox" name="select-all-items"id="select-all-items"></th>
-                                            <!-------------------->
-                                            <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
-                                            <th scope="col">Tgl. Pemasukan</th>
-                                            <th scope="col">Jenis Barang</th>
-                                            <th scope="col">Merek Barang</th>
-                                            <th scope="col">No. Dokumen BC</th>
-                                            <th scope="col">Barcode Barang (No. Reff)</th>
-                                            <th scope="col">Harga Per Unit</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                                            <td class="">Produk Kosmetik Master</td>
-                                            <td class="">21/06/2022</td>
-                                            <td class="">Kosmetik</td>
-                                            <td class="">Master</td>
-                                            <td class="">000000</td>
-                                            <td class="">76543210</td>
-                                            <td class="">69.50</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="bg-warning p-2 ms-4" style="width: 770px;">
-                                <button type="button" class="btn btn-danger" id="delete-items-btn">
-                                    <strong>Hapus Barang (x)</strong>
-                                </button>
+                                <!---- TGL. PEMASUKAN INPUT ---->
+                                <div>
+                                    <label for="tgl-pemasukan" class="form-label">Tanggal Pemasukan:</label>
+                                    <input type="text" name="tgl-pemasukan" id="jenis-dokumen">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!----- FILTER CHECKER CONTAINER ----->
-                <div class="container-lg mx-3" aria-label="check-before">
-                    <p style="text-align: center;">Check filterisasi & tambahkan data dari keranjang yang di-filter akan divalidasi ke lampiran</p>
-                    <div class="d-flex justify-content-center my-2">
-                        <div id="filter-check">Filter Form: Not Ok</div>
-                        <div id="keranjang-check">Keranjang Selection: Not Ok</div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-info p-1" id="check-add-lampiran">
-                            <strong>Check & Tambah Lampiran</strong>
-                        </button>
-                    </div>
+                        <!----- THIRD ROW ---->
+                        <div class="row my-1">
+                            <div class="col">
+                                <label for="index-tag">Index Tag:</label>
+                                <input type="text" name="index-tag" id="index-tag" class="ms-1">
+                            </div>
+                            <div class="col">
+                            <!---- INPUT ERROR FLASH ---->
+                            <!---
+                                <%# if(errors != "") { %>
+                                    <%# errors.forEach((item) => { %>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <%#- item %>
+                                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    <%# }); %>
+                                <%# } %> 
+                            --->
+                            </div>
+                        </div>
+
+                        <!---- THIRD ROW ---->
+                        <div class="row row-cols-1 my-1">
+                            <div class="col">
+                                <h4>Keranjang Barang</h4>
+                            </div>
+
+                            <!---- TABLE KERANJANG BARANG ---->
+                            <div class="col">
+                                <!---- TABLE KERANJANG CONTAINER---->
+                                <div class="overflow-scroll table-container-size-pgl border mx-4 bg-light">
+                                    <table class="table table-light table-bordered border table-hover table-custom-pgl">
+                                        <thead class="table-secondary">
+                                            <tr>
+                                                <!---- CHECKBOX ALL -->
+                                                <th scope="col"><input type="checkbox" name="select-all-items"id="select-all-items"></th>
+                                                <!-------------------->
+                                                <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
+                                                <th scope="col">Tgl. Pemasukan</th>
+                                                <th scope="col">Jenis Barang</th>
+                                                <th scope="col">Merek Barang</th>
+                                                <th scope="col">No. Dokumen BC</th>
+                                                <th scope="col">Barcode Barang (No. Reff)</th>
+                                                <th scope="col">Harga Per Unit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="checkbox" name="select-item" id="select-item"></td>
+                                                <td class="">Produk Kosmetik Master</td>
+                                                <td class="">21/06/2022</td>
+                                                <td class="">Kosmetik</td>
+                                                <td class="">Master</td>
+                                                <td class="">000000</td>
+                                                <td class="">76543210</td>
+                                                <td class="">69.50</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!----- TABLE UTILITIES ---->
+                                <div class="my-3 mx-4">
+                                    <!---- DELETE SELECTED ITEM FROM TABLE BUTTON ---->
+                                    <button type="button" name="delete-items-btn" id="delete-items-btn" class="btn btn-danger"><span>Hapus Barang (x)</span></button>
+                                    <!---- ADD ITEM INTO LAMPIRAN ---->
+                                    <button type="button" name="add-item-lampiran" id="add-item-lampiran" class="btn btn-primary"><span>Tambah Item ke Lampiran</span></button>
+                                    <!---- INPUT ERROR FLASH FROM TABLE ---->
+                                    <!---
+                                    <%# if(errors != "") { %>
+                                        <%# errors.forEach((item) => { %>
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <%#- item %>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        <%# }); %>
+                                    <%# } %> 
+                                    --->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!---- FOURTH ROW ---->
+                        <div class="row my-1 bg-light mx-3 p-1">
+                            <div class="p-2 row">
+                                <h4>Tambah Barang</h4>
+                            </div>
+                            <!---- LAMPIRAN ITEM ---->
+                            <div class="row border border-dark mx-2 my-1 p-1">
+                                <div class="col-3">
+                                    <strong>Reff: </strong>
+                                    <span>7611773097710</span>
+                                </div>
+                                <div class="col-5">
+                                    <strong>Description Brg: </strong>
+                                    <span>LAP Supreme Balm Cleaner</span>
+                                </div>
+                                <div class="col-2">
+                                    <strong>Qty: </strong>
+                                    <span>1 PCS</span>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-danger">
+                                        Delete 
+                                        <span class="icon-trash-svgrepo-com"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!---- LAMPIRAN ITEM ---->
+                            <div class="row border border-dark mx-2 my-1 p-1">
+                                <div class="col-3">
+                                    <strong>Reff: </strong>
+                                    <span>7611773097710</span>
+                                </div>
+                                <div class="col-5">
+                                    <strong>Description Brg: </strong>
+                                    <span>LAP Supreme Balm Cleaner</span>
+                                </div>
+                                <div class="col-2">
+                                    <strong>Qty: </strong>
+                                    <span>1 PCS</span>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-danger">
+                                        Delete 
+                                        <span class="icon-trash-svgrepo-com"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---- FIFTH ROW ---->
+                        <div class="row mt-3">
+                            <div class="col">
+                                <!---- INPUT ERROR FLASH FROM TABLE ---->
+                                <!---
+                                <%# if(errors != "") { %>
+                                    <%# errors.forEach((item) => { %>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <%#- item %>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    <%# }); %>
+                                <%# } %> 
+                                --->
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary"><strong>Tambahkan Lampiran ke Daftar</strong></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!----- LAMPIRAN CONTAINER ------>

@@ -1,11 +1,46 @@
 const express = require('express');
 const router = express.Router();
-let pemasukanController, pengeluaranController, historiController;
+const pengeluaranController = require('../controllers/pengeluaran.controller');
+const penarikanController = require('../controllers/penarikan.controller');
+const historiController = require('../controllers/histori.controller');
+
+const initBarangRoutes = (app) => {
+    router.get("/pengeluaran", pengeluaranController.handlePengeluaran); // masuk ke pengeluaran
+    router.get("/penarikan", penarikanController.handlePenarikan); // masuk ke penarikan
+    router.get("/histori", historiController.handleHistori); // masuk ke histori
+
+    return app.use("/", router);
+};
+
+module.exports = initBarangRoutes;
 
 /*
+Tugas-Tugas Router barang masuk, keluar, dan histori:
+TODO+). ('post')('localhost:7000/barang'), pemasukanController.addItemBarang, auth.validateItem, storgae.imgUploader => Tambah data barang ke table
+
+TODO+). ('get')('localhost:7000/barang'), pemasukanController.viewItemAllBarang => Tampil Semua data barang di dalam table Pemasukan
+
+TODO+). ('get')('localhost:7000/barang?name={deskripsiBarang}'), pemasukanController.viewItemBarangByName => Tampil data barang sesuai deskripsi barang (nama Barang) di search bar
+
+TODO+). ('get')('localhost:7000/barang/:tgl_pemasukan&:no_dokumen&:waktu&:merek&:harga&:jenis_barang'), pemasukanController.viewItemByFilter => Tampil data barang sesuai filter 6 input (Tgl. Pemasukan, No. Dokumen BC, Waktu, Merek Barang, Harga Per Unit, Jenis Barang)
+
+TODO+). ('get')('localhost:7000/barang/:id'), pemasukanController.selectToEditById => Memilih barang yang akan diedit dan diubah.
+
+TODO+). ('post')('localhost:7000/barang/:id'), pemasukanController.updateItemBarangById, auth.validateItem => Ubah input data barang per id.
+
+TODO+). ('post')('localhost:7000/barang/kirim/:id'), pemasukanController.moveItemsBarang, pengeluaranController.getItemsPemasukan =>  Menyalin data barang ke Keranjang jual di halaman pengeluaran
+
+TODO+). ('delete')(`localhost:7000/barang/:id`), pemasukanController.deleteItemsById => Hapus data barang di table pemasukan 
+
+*Test REST API plug into MYSQL Database
+TODO+). ('get')('localhost:7000/api/barang/'), res.status(200).json(data)
+TODO+). ('post')('localhost:7000/api/barang/'), res.status(200).json(data)
+TODO+). ('delete')('localhost:7000/api/barang/:id'), req.param.id => res.status(200).json(data)
+TODO+). ('put')('localhost:7000/api/barang/:id'), req.param.id
+
 1). Tambah Barang ('/post') di dalam Modal:
     =======================================
-    INPUT DATA UNTUK addItemBarang
+    +> addItemBarang
     1). Isi formulir berisi input (Deskripsi Barang, Tgl. Pemasukkan, Jenis Barang Option, Nama Brand, No. Dokumen BC, Harga Per Unit, Vendor Item, HS Code, Barcode Barang, Gambar Barang)
     
     2). Value dalam input tersebut yang akan memanggil Mysql untuk mencari `tb_barang` dengan query (`CALL tambahkanBarang(1?, 2?, 3?, 4?, 5?, 6?, 7?, 8?, 9?)`)
@@ -19,7 +54,6 @@ let pemasukanController, pengeluaranController, historiController;
         8? => barcode_brg
         9? => img_barang
         2.1). Dalam kolom id_jenis_barang terdiri ada 4 => 1 - Kosmetik, 2 - Perhiasan, 3 - Jam Tangan, 4 - Fashion
-        2.2). 
 
     3). Pengisian Formulir penambahan barang di antarmuka "Modal Add Item" di "pemasukan.ejs"
         3.1). Hasil dari input tambah barang menjadi =>
@@ -34,33 +68,133 @@ let pemasukanController, pengeluaranController, historiController;
               +> data.barcode_brg => req.body.barcode_brg
               +> data.img_barang => req.file.img_barang
 
-        3.2). data.img_barang yang akan diisi oleh teks image dari folder apapun di komputer elu, teks image itu tertulis nama image yang diupload dari folder tersebut
-            3.2.1). Gunakan imageFile.mv(uploadPath) untuk menempatkan image itu kedalam database `tb_barang` kolom `img_barang` dengan plugin import "express-fileupload"
+              3.1.1). ketika memasukkan data.harga_per_unit di formulir input ke dalam table pemasukan, gantikan type data harga_per_unit number integer ke string.  
+
+        3.2). data.img_barang yang akan diisi oleh teks image dari folder apapun di komputer kamu, teks image itu tertulis nama image yang diupload dari folder tersebut
+            3.2.1). Gunakan multer untuk menempatkan image itu kedalam database `tb_barang` kolom `img_barang` sebagai berikut:
+            Siapkan storage engine
+            const storage = multer.diskStorage({
+                destination: path.join(__)
+            })
+
             3.2.2). image tersebut dengan nama file akan diupload ke dalam folder directory "upload/img", folder "upload/img" adalah storage image yang diupload
 
         3.3). Formulir input di "Modal Add Item" bisa dihapus semua dengan tombol reset
-            
+
+        3.4). setiap baris item harga_per_unit di dalam kolomnya sendiri dijumlahkan semua kedalam total. "Pemasukan.ejs" 
+      
+2). Tampil Barang ('/get')
     Method-method pemasukan.controller:
-        +> findBarangByFilter = Cari barang sesuai filter modal dropdown
-            1). Filter modal yang hanya cari kolom:
-                -> Tgl. Pemasukan
-                -> No. Dokumen BC
-                -> Waktu
-                -> Merek Barang
-                -> Harga Per Unit
-                -> Jenis Barang (select Option)
-                Untuk mencari barang sesuai filternya, querynya seperti ini: 
+    +> findBarangByFilter = Cari barang sesuai filter modal dropdown
+        1). Filter modal yang hanya cari kolom:
+            -> Tgl. Pemasukan
+            -> No. Dokumen BC
+            -> Waktu
+            -> Merek Barang
+            -> Harga Per Unit
+            -> Jenis Barang (select Option)
+            Untuk mencari barang sesuai filternya, querynya seperti ini: 
 
-                "SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE d.tgl_pemasukan = "" OR d.no_dokumen_bc = "" OR b.waktu = "" OR b.merek_brg = "" OR b.harga_per_unit = 0 AND j.jenis_barang;"
+            "SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE d.tgl_pemasukan = "" OR d.no_dokumen_bc = "" OR b.waktu = "" OR b.merek_brg = "" OR b.harga_per_unit = 0 AND j.jenis_barang;"
 
-        +> viewBarangPerPage = tampilkan jumlah barang per halaman didalam table (pagination)
-            1). Algoritma:
-                Variable resultPerPage = 10 <= default
-                Variable numberOfResult = result.length
-                Variable numberOfPages = Math.ceil(numberOfResult / )
-            2). 
+    +> viewBarangPerPage = tampilkan jumlah barang per halaman didalam table (pagination)
+        1). Algoritma:
+            const resultsPerPage = 10 => menampilkan berapa hasil yang ditampilkan per halaman
 
-        +> 
+            const numOfResults = result.length => page_numbers
+
+            variable numberOfPages = Math.ceil(numOfResults / resultsPerPage)
+            !! Dicek dulu numberOfPages dengan console.log(numberOfPages)
+
+            variable let page = req.query.page ? Number(req.query.page) : 1;
+            !! Dicek dulu req.query.page dengan console.log(req.query.page) & console.log(page)
+
+            Route Params untuk mengarah halaman ke berapa yang dituju:
+            +> ('localhost:7000/?page={numberOfPages}');
+                jika page melebihi dari numberOfPages
+            +> ('localhost:7000/?page=1');
+                jika page kurang dari 1
+            if (page > numberOfPages){
+                res.redirect('/?page=' + encodeURIComponent(numberOfPages));
+            } else if (page < 1){
+                res.redirect('/?page=' + encodeURIComponent('1'))
+            }
+            
+            Menghitung limit page_number dengan rumus
+            const startingLimit = (page - 1) * resultsPerPage;
+
+            QUERY pagination: 
+            SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) LIMIT {startingLimit} OFFSET {resultsPerPage}; 
+
+            db.query(sql, (err, result) => {
+                if (err) throw err;
+                let iterator = (page - 5) < 1 ? 1 : page - 5;
+                let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages - page);
+                if(endingLink < (page + 4)){
+                    iterator -= (page + 4) - numberOfPages;
+                }
+                res.render('pemasukan', { data: result, page, iterator, endingLink, number })
+            })         
+        
+        2). Pagination bs5 => Pemasukan.ejs:
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <% if(page > 1) { %>
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <% } %>
+                        <% else { %>
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        <% } %>
+                    </li>
+                    <% for(let i = iterator; i <= endingLink; i++) { %>
+                        <% if(i === page) { %>
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="/?page=<%=i%>"><%=i%></a>
+                            </li>
+                            <% continue; %>
+                        <% } %>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="/?page=<%=i%>"><%=i%></a>
+                        </li>
+                    <% } %>
+                    <% if (page < numberOfPages) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="/?page=<%=page + 1 %>">Next</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </nav>
+            
+    +> selectItemById = Pilih satu item barang dengan checkbox option didalam tabel pemasukan
+    1). Algoritma:
+        Front End:
+        $(document).ready(function() {
+            $("#select-all-items").click(function() {
+                var isChecked = $(this).prop("checked");
+                 $('#tb_pemasukan tr:has(td)').find('input[type="checkbox"]').prop('checked', isChecked);
+            });
+
+            $('#stb_pemasukan tr:has(td)').find('input[type="checkbox"]').click(function() {
+                var isChecked = $(this).prop("checked");
+                var isHeaderChecked = ${"#select-all-items"}.prop("checked");
+                if (isChecked == false && isHeaderChecked) {
+                    $(#select-all-items).prop('checked', isChecked);
+                }
+                else {
+                    $('tb_pemasukan tr:has(td)').find('input[type="checkbox"]').each(function() {
+                        if($(this).prop("checked") == false) {
+                            isChecked = false;
+                        }
+                    });
+                    console.log(isChecked);
+
+                    $("#select-all-item").prop('checked', isChecked);
+                }
+            });
+        })
+
+        Server-side:
 
     4). 
     
