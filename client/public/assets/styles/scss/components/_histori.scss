@@ -1,0 +1,22 @@
+@mixin margin-control-axis ($m-left, $m-right) {
+    margin-left: $m-left;
+    margin-right: $m-right;
+}
+
+.histori-box{
+    width: 70vw;
+    @include margin-control-axis(auto, auto);
+}
+
+.histori-list{
+    list-style-type: none;
+    height: 100vh;
+
+    li {
+        @include margin-control-axis(-32px, 25px);
+    }
+}
+
+.pemasukan-header{
+    background-color: rgb(85, 80, 6);
+}

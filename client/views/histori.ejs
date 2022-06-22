@@ -30,7 +30,35 @@
             
             <!---- CONTAINER CONTENT FROM TAB ---->
             <div class="container bg-light p-3">
-                <h1 class="display-4">FUCK YOU</h1>
+                <div class="histori-box bg-light p-2 border">
+                    <!---- DATE FILTER ---->
+                    <form action="" method="post" class="d-flex justify-content-end align-items-center border">
+                        <label for="search-date" class="me-2">
+                            Search Date:
+                        </label>
+                        <input type="date" id="search-date" name="search-date">
+                        <button type="submit" class="btn btn-dark mx-2">Search</button>
+                    </form>
+                    <!---- HISTORI LIST ---->
+                    <ul class="histori-list overflow-auto d-block mt-4 mb-2 border">
+                        <!---- LAMPIRAN ITEM ---->
+                        <li class="d-block">
+                            <div class="pemasukan-header d-flex justify-content-between p-2">
+                                <div class="btn btn-warning">
+                                    <span style="color: rgb(85, 80, 6);">
+                                        <strong>Pemasukan</strong>
+                                    </span>
+                                </div>
+                                <span class="d-block" style="color: white;">
+                                    <strong>Waktu Penerimaan: 05/08/2021</strong>
+                                </span>
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
