@@ -36,7 +36,7 @@ TODO+). ('delete')(`localhost:7000/barang/:id`), pemasukanController.deleteItems
 TODO+). ('get')('localhost:7000/api/barang/'), res.status(200).json(data)
 TODO+). ('post')('localhost:7000/api/barang/'), res.status(200).json(data)
 TODO+). ('delete')('localhost:7000/api/barang/:id'), req.param.id => res.status(200).json(data)
-TODO+). ('put')('localhost:7000/api/barang/:id'), req.param.id
+TODO+). ('post')('localhost:7000/api/barang/:id'), req.param.id
 
 1). Tambah Barang ('/post') di dalam Modal:
     =======================================
