@@ -7,31 +7,6 @@ $table-cell-padding-x:        .5rem;
 $table-cell-padding-y-sm:     .10rem;
 $table-cell-padding-x-sm:     .25rem;
 
-// ULTILITES API
-/*
-$utilities: map-merge(
-  $utilities,
-  (
-    "cursor": (
-      property: cursor,
-      class: cursor,
-      responsive: true,
-      values: auto pointer grab,
-    )
-  )
-);
-
-Create your own map
-$custom-colors: (
-  "custom-color": #900
-
-Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
-*/
-$custom-colors: (
-    "warning-10": rgb(243, 231, 122)
-);
-
 // IMPORT BOOTSTRAP
 @import "../../../../../node_modules/bootstrap/scss/bootstrap.scss";
 
