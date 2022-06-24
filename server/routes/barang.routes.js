@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const pemasukanController = require('../controllers/pemasukan.controller');
 const pengeluaranController = require('../controllers/pengeluaran.controller');
 const penarikanController = require('../controllers/penarikan.controller');
 const historiController = require('../controllers/histori.controller');
@@ -8,6 +9,7 @@ const initBarangRoutes = (app) => {
     router.get("/pengeluaran", pengeluaranController.handlePengeluaran); // masuk ke pengeluaran
     router.get("/penarikan", penarikanController.handlePenarikan); // masuk ke penarikan
     router.get("/histori", historiController.handleHistori); // masuk ke histori
+    router.get("/barang", pemasukanController.viewBarang); // Tampil barang masuk per halaman
 
     return app.use("/", router);
 };
@@ -16,9 +18,9 @@ module.exports = initBarangRoutes;
 
 /*
 Tugas-Tugas Router barang masuk, keluar, dan histori:
-TODO+). ('post')('localhost:7000/barang'), pemasukanController.addItemBarang, auth.validateItem, storgae.imgUploader => Tambah data barang ke table
+TODO+). ('post')('localhost:7000/barang'), pemasukanController.addItemBarang, auth.validateItem, storage.imgUploader => Tambah data barang ke table
 
-TODO+). ('get')('localhost:7000/barang'), pemasukanController.viewItemAllBarang => Tampil Semua data barang di dalam table Pemasukan
+TODO+). ('get')('localhost:7000/barang'), pemasukanController.viewBarangPerPage => Tampil Semua data barang di dalam table Pemasukan
 
 TODO+). ('get')('localhost:7000/barang?name={deskripsiBarang}'), pemasukanController.viewItemBarangByName => Tampil data barang sesuai deskripsi barang (nama Barang) di search bar
 
@@ -37,6 +39,8 @@ TODO+). ('get')('localhost:7000/api/barang/'), res.status(200).json(data)
 TODO+). ('post')('localhost:7000/api/barang/'), res.status(200).json(data)
 TODO+). ('delete')('localhost:7000/api/barang/:id'), req.param.id => res.status(200).json(data)
 TODO+). ('post')('localhost:7000/api/barang/:id'), req.param.id
+
+1).  
 
 1). Tambah Barang ('/post') di dalam Modal:
     =======================================
@@ -97,74 +101,7 @@ TODO+). ('post')('localhost:7000/api/barang/:id'), req.param.id
 
             "SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE d.tgl_pemasukan = "" OR d.no_dokumen_bc = "" OR b.waktu = "" OR b.merek_brg = "" OR b.harga_per_unit = 0 AND j.jenis_barang;"
 
-    +> viewBarangPerPage = tampilkan jumlah barang per halaman didalam table (pagination)
-        1). Algoritma:
-            const resultsPerPage = 10 => menampilkan berapa hasil yang ditampilkan per halaman
-
-            const numOfResults = result.length => page_numbers
-
-            variable numberOfPages = Math.ceil(numOfResults / resultsPerPage)
-            !! Dicek dulu numberOfPages dengan console.log(numberOfPages)
-
-            variable let page = req.query.page ? Number(req.query.page) : 1;
-            !! Dicek dulu req.query.page dengan console.log(req.query.page) & console.log(page)
-
-            Route Params untuk mengarah halaman ke berapa yang dituju:
-            +> ('localhost:7000/?page={numberOfPages}');
-                jika page melebihi dari numberOfPages
-            +> ('localhost:7000/?page=1');
-                jika page kurang dari 1
-            if (page > numberOfPages){
-                res.redirect('/?page=' + encodeURIComponent(numberOfPages));
-            } else if (page < 1){
-                res.redirect('/?page=' + encodeURIComponent('1'))
-            }
-            
-            Menghitung limit page_number dengan rumus
-            const startingLimit = (page - 1) * resultsPerPage;
-
-            QUERY pagination: 
-            SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) LIMIT {startingLimit} OFFSET {resultsPerPage}; 
-
-            db.query(sql, (err, result) => {
-                if (err) throw err;
-                let iterator = (page - 5) < 1 ? 1 : page - 5;
-                let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages - page);
-                if(endingLink < (page + 4)){
-                    iterator -= (page + 4) - numberOfPages;
-                }
-                res.render('pemasukan', { data: result, page, iterator, endingLink, number })
-            })         
-        
-        2). Pagination bs5 => Pemasukan.ejs:
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <% if(page > 1) { %>
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        <% } %>
-                        <% else { %>
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        <% } %>
-                    </li>
-                    <% for(let i = iterator; i <= endingLink; i++) { %>
-                        <% if(i === page) { %>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="/?page=<%=i%>"><%=i%></a>
-                            </li>
-                            <% continue; %>
-                        <% } %>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="/?page=<%=i%>"><%=i%></a>
-                        </li>
-                    <% } %>
-                    <% if (page < numberOfPages) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="/?page=<%=page + 1 %>">Next</a>
-                        </li>
-                    <% } %>
-                </ul>
-            </nav>
+   
             
     +> selectItemById = Pilih satu item barang dengan checkbox option didalam tabel pemasukan
     1). Algoritma:
