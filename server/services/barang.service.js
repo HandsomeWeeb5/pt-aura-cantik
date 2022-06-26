@@ -1,5 +1,5 @@
 const DBconnection = require('../config/dbconn.config');
-
+const helper = require('../config/helper.config');
 
 const addItemBarang = (data) => {
     return new Promise(async (resolve, reject) => {
@@ -50,9 +50,22 @@ const viewBarang = () => {
     
 }
 
+const viewBarangPerPage = (page = 1, items) => {
+    const offset = helper.getOffset(page, items)
+    return new Promise (async (resolve, reject) => {
+        DBconnection.query(`SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, d.no_dokumen_bc, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) ORDER BY b.id_barang LIMIT ${items} OFFSET ${offset}; `, (err, results) => {
+            if(err){
+                reject(err);
+            } else if (results){
+                resolve(results);
+            }
+        });
+    })
+}
 
 module.exports = {
-    viewBarang: viewBarang
+    viewBarang: viewBarang,
+    viewBarangPerPage: viewBarangPerPage
 }
 
 /*

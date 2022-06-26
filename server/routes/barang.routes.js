@@ -9,7 +9,7 @@ const initBarangRoutes = (app) => {
     router.get("/pengeluaran", pengeluaranController.handlePengeluaran); // masuk ke pengeluaran
     router.get("/penarikan", penarikanController.handlePenarikan); // masuk ke penarikan
     router.get("/histori", historiController.handleHistori); // masuk ke histori
-    router.get("/barang", pemasukanController.viewBarang); // Tampil barang masuk per halaman
+    router.get("/barang", pemasukanController.viewBarangPerPage); // Tampil barang masuk per halaman
 
     return app.use("/", router);
 };
