@@ -127,6 +127,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% data.forEach(entry => {%> 
+                            <tr class="d-flex">
+                                <td><input type="checkbox" name="select-item" id="select-item"></td>
+                                <td class="th-deskripsi-brg"><%= entry.deskripsi_brg %></td>
+                                <td class="th-tgl-pemasukan"><%= entry.tgl_pemasukan %></td>
+                                <td class="th-jenis-brg"><%= entry.jenis_barang %></td>
+                                <td class="th-waktu"><%= entry.waktu %></td>
+                                <td class="th-merek-brg"><%= entry.merek_brg %></td>
+                                <td class="th-no-dokumen-bc"><%= entry.no_dokumen_bc %></td>
+                                <td class="th-harga-per-unit"><%= entry.harga_per_unit %></td>
+                                <td class="th-vendor-item"><%= entry.vendor_item %></td>
+                                <td class="th-hs-code"><%= entry.hs_code %></td>
+                                <td class="th-barcode-brg"><%= entry.barcode_brg %></td>
+                                <td class="th-aksi-data">
+                                    <button class="btn btn-warning">
+                                        <strong>Edit</strong>
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        <strong>View</strong>
+                                    </button>
+                                </td>
+                            </tr>
+                        <% }) %>
                         <tr class="d-flex">
                             <td><input type="checkbox" name="select-item" id="select-item"></td>
                             <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
@@ -148,69 +171,7 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr class="d-flex">
-                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
-                            <td class="th-tgl-pemasukan">21/06/2022</td>
-                            <td class="th-jenis-brg">Kosmetik</td>
-                            <td class="th-waktu">14:59:01</td>
-                            <td class="th-merek-brg">Master</td>
-                            <td class="th-no-dokumen-bc">000000</td>
-                            <td class="th-harga-per-unit">69.50</td>
-                            <td class="th-vendor-item">VHS123</td>
-                            <td class="th-hs-code">71170000</td>
-                            <td class="th-barcode-brg">76543210</td>
-                            <td class="th-aksi-data">
-                                <button class="btn btn-warning">
-                                    <strong>Edit</strong>
-                                </button>
-                                <button class="btn btn-warning">
-                                    <strong>View</strong>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="d-flex">
-                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
-                            <td class="th-tgl-pemasukan">21/06/2022</td>
-                            <td class="th-jenis-brg">Kosmetik</td>
-                            <td class="th-waktu">14:59:01</td>
-                            <td class="th-merek-brg">Master</td>
-                            <td class="th-no-dokumen-bc">000000</td>
-                            <td class="th-harga-per-unit">69.50</td>
-                            <td class="th-vendor-item">VHS123</td>
-                            <td class="th-hs-code">71170000</td>
-                            <td class="th-barcode-brg">76543210</td>
-                            <td class="th-aksi-data">
-                                <button class="btn btn-warning">
-                                    <strong>Edit</strong>
-                                </button>
-                                <button class="btn btn-warning">
-                                    <strong>View</strong>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="d-flex">
-                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
-                            <td class="th-tgl-pemasukan">21/06/2022</td>
-                            <td class="th-jenis-brg">Kosmetik</td>
-                            <td class="th-waktu">14:59:01</td>
-                            <td class="th-merek-brg">Master</td>
-                            <td class="th-no-dokumen-bc">000000</td>
-                            <td class="th-harga-per-unit">69.50</td>
-                            <td class="th-vendor-item">VHS123</td>
-                            <td class="th-hs-code">71170000</td>
-                            <td class="th-barcode-brg">76543210</td>
-                            <td class="th-aksi-data">
-                                <button class="btn btn-warning">
-                                    <strong>Edit</strong>
-                                </button>
-                                <button class="btn btn-warning">
-                                    <strong>View</strong>
-                                </button>
-                            </td>
-                        </tr>
+                        
                 </table>
             </div>
 
